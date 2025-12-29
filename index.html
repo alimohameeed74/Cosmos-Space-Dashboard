@@ -170,7 +170,8 @@
                 Today in Space
               </h2>
               <p id="apod-date" class="text-slate-400 text-xs md:text-sm">
-                Astronomy Picture of the Day - March 14, 2024
+                Astronomy Picture of the Day -
+                <span id="picture-date"> March 14, 2024 </span>
               </p>
             </div>
             <div class="flex items-center space-x-2 md:space-x-3">
@@ -216,18 +217,24 @@
                 <img
                   id="apod-image"
                   class="w-full h-full object-cover"
-                  src="./assets/images/placeholder.webp"
+                  src="https://apod.nasa.gov/apod/image/2512/Crab_Chen_960.jpg"
                   alt="Astronomy Picture of the Day"
                 />
                 <div
                   class="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                   <div class="absolute bottom-6 left-6 right-6">
-                    <button
-                      class="w-full py-3 bg-white/10 backdrop-blur-md rounded-lg font-semibold hover:bg-white/20 transition-colors"
+                    <a
+                      id="apod-image-full-hd"
+                      href="https://apod.nasa.gov/apod/image/2512/Crab_Chen_1920.jpg"
+                      target="_blank"
                     >
-                      <i class="fas fa-expand mr-2"></i>View Full Resolution
-                    </button>
+                      <button
+                        class="w-full py-3 bg-white/10 backdrop-blur-md rounded-lg font-semibold hover:bg-white/20 transition-colors"
+                      >
+                        <i class="fas fa-expand mr-2"></i>View Full Resolution
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>
