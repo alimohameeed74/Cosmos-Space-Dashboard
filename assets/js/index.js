@@ -157,8 +157,101 @@ apodDateInput.addEventListener('change', function(e){
 // =========================================
 // Launches Section
 // 1) Main Variables
+// Featured
+let featuredLaunchName = document.querySelector('#launches #featured-launch #featured-launch-name');
+let featuredLaunchStatus = document.querySelector('#launches #featured-launch #featured-launch-status');
+let featuredLaunchServiceProviderName = document.querySelector('#launches #featured-launch #featured-launch-service-provider-name');
+let featuredLaunchRocketType = document.querySelector('#launches #featured-launch #featured-launch-rocket-type');
+let featuredLauncheDate = document.querySelector('#launches #featured-launch #featured-launche-date');
+let featuredLauncheTime = document.querySelector('#launches #featured-launch #featured-launche-time');
+let featuredLauncheLocation = document.querySelector('#launches #featured-launch #featured-launche-location');
+let featuredLauncheCountry = document.querySelector('#launches #featured-launch #featured-launche-country');
+let featuredLauncheDes = document.querySelector('#launches #featured-launch #featured-launche-des');
+let featuredLaunchImg = document.querySelector('#launches #featured-launch #featured-launch-img');
+// Next
+
 // 2) Main Functions
+function formatLaunchDate(net) {
+  const date = new Date(net);
+  return date.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC"
+  });
+}
+
+function formatLaunchTime(net) {
+  const date = new Date(net);
+  return date.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "UTC"
+  }) + " UTC";
+}
+
+function setLaunchImage(imgEl, url) {
+  const img = new Image();
+  img.onload = () => imgEl.src = url;
+  img.onerror = () => imgEl.src = "assets/images/placeholder.jpg";
+  img.src = url;
+}
+
+function setSafeImage(imgEl, url, fallback = "assets/images/launch-placeholder.png") {
+    const testImg = new Image();
+    testImg.onload = () => {
+        imgEl.src = url;
+    };
+    testImg.onerror = () => {
+        imgEl.src = fallback;
+    };
+    testImg.src = url;
+}
+
+
+
+function displayLaunches(launches){
+    console.log(launches);
+    // Featured
+    featuredLaunchStatus.innerHTML = launches[0].status.abbrev;
+    featuredLaunchName.innerHTML = launches[0].name;
+    featuredLaunchServiceProviderName.innerHTML = launches[0].launch_service_provider.name;
+    featuredLaunchRocketType.innerHTML = launches[0].rocket.configuration.full_name;
+    featuredLauncheDate.innerHTML = formatLaunchDate(launches[0].net);
+    featuredLauncheTime.innerHTML = formatLaunchTime(launches[0].net);
+    featuredLauncheLocation.innerHTML = launches[0].pad.location.name;
+    featuredLauncheCountry.innerHTML = launches[0].pad.country.name;
+    featuredLauncheDes.innerHTML = launches[0].pad.location. description;
+    setSafeImage(featuredLaunchImg, launches[0]?.image?.image_url);
+
+    
+    // launches[0].image.thumbnail_url
+    
+
+
+    // Next
+}
+
+
+
+
+async function getUpcomingLaunches() {
+    try{
+        let response = await fetch('https://lldev.thespacedevs.com/2.3.0/launches/upcoming/?limit=10');        
+        if (!response.ok){
+            throw new Error('Problem happened when getting launches');
+        }
+        let data = await response.json();
+        displayLaunches(data.results);
+    }
+    catch(error){
+        console.log(error.message);
+    }
+}
 // 3) Main Logic
+
 // =========================================
 // =========================================
 // Planets Section
@@ -187,7 +280,6 @@ let planetInclination = document.querySelector('#planets #planet-inclination');
 let planetAxialTilt = document.querySelector('#planets #planet-axial-tilt');
 let planetTemp = document.querySelector('#planets #planet-temp');
 let planetEscape = document.querySelector('#planets #planet-escape');
-
 let filteredPlanet={};
 let allPlanets=[];
 // 2) Main Functions
@@ -343,6 +435,7 @@ function init(){
     document.querySelector('#sidebar a').classList.add('text-blue-400','bg-blue-500/10');
     closeSideBar();
     getAllPlanets();
+    getUpcomingLaunches();
 }
 // 3) Main Logic of Whole Porject
 init();

@@ -337,24 +337,26 @@
                         Featured Launch
                       </span>
                       <span
+                        id="featured-launch-status"
                         class="px-4 py-1.5 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold"
                       >
                         Go
                       </span>
                     </div>
-                    <h3 class="text-3xl font-bold mb-3 leading-tight">
-                      Starship Flight 3
-                    </h3>
+                    <h3
+                      id="featured-launch-name"
+                      class="text-3xl font-bold mb-3 leading-tight"
+                    ></h3>
                     <div
                       class="flex flex-col xl:flex-row xl:items-center gap-4 mb-6 text-slate-400"
                     >
                       <div class="flex items-center gap-2">
                         <i class="fas fa-building"></i>
-                        <span>SpaceX</span>
+                        <span id="featured-launch-service-provider-name"></span>
                       </div>
                       <div class="flex items-center gap-2">
                         <i class="fas fa-rocket"></i>
-                        <span>Starship</span>
+                        <span id="featured-launch-rocket-type"></span>
                       </div>
                     </div>
                     <div
@@ -374,7 +376,7 @@
                           <i class="fas fa-calendar"></i>
                           Launch Date
                         </p>
-                        <p class="font-semibold">March 14, 2024</p>
+                        <p id="featured-launche-date" class="font-semibold"></p>
                       </div>
                       <div class="bg-slate-900/50 rounded-xl p-4">
                         <p
@@ -383,7 +385,7 @@
                           <i class="fas fa-clock"></i>
                           Launch Time
                         </p>
-                        <p class="font-semibold">12:00 PM UTC</p>
+                        <p id="featured-launche-time" class="font-semibold"></p>
                       </div>
                       <div class="bg-slate-900/50 rounded-xl p-4">
                         <p
@@ -392,7 +394,10 @@
                           <i class="fas fa-map-marker-alt"></i>
                           Location
                         </p>
-                        <p class="font-semibold text-sm">Starbase, Texas</p>
+                        <p
+                          id="featured-launche-location"
+                          class="font-semibold text-sm"
+                        ></p>
                       </div>
                       <div class="bg-slate-900/50 rounded-xl p-4">
                         <p
@@ -401,14 +406,16 @@
                           <i class="fas fa-globe"></i>
                           Country
                         </p>
-                        <p class="font-semibold">USA</p>
+                        <p
+                          id="featured-launche-country"
+                          class="font-semibold"
+                        ></p>
                       </div>
                     </div>
-                    <p class="text-slate-300 leading-relaxed mb-6">
-                      The third integrated flight test of Starship. The
-                      prototype for the heavy-lift launch vehicle is currently
-                      being built by SpaceX.
-                    </p>
+                    <p
+                      id="featured-launche-des"
+                      class="text-slate-300 leading-relaxed mb-6"
+                    ></p>
                   </div>
                   <div class="flex flex-col md:flex-row gap-3">
                     <button
@@ -436,14 +443,19 @@
                     class="relative h-full min-h-[400px] rounded-2xl overflow-hidden bg-slate-900/50"
                   >
                     <!-- Placeholder image/icon since we can't load external images reliably without correct URLs -->
-                    <div
-                      class="flex items-center justify-center h-full min-h-[400px] bg-slate-800"
+                    <!-- <div
+                      class="flex hidden items-center justify-center h-full min-h-[400px] bg-slate-800"
                     >
                       <i class="fas fa-rocket text-9xl text-slate-700/50"></i>
-                    </div>
-                    <div
+                    </div> -->
+                    <img
+                      id="featured-launch-img"
+                      src=""
+                      class="w-full h-full object-cover"
+                    />
+                    <!-- <div
                       class="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent"
-                    ></div>
+                    ></div> -->
                   </div>
                 </div>
               </div>
