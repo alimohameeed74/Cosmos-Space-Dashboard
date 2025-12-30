@@ -171,7 +171,7 @@
               </h2>
               <p id="apod-date" class="text-slate-400 text-xs md:text-sm">
                 Astronomy Picture of the Day -
-                <span id="picture-date"> March 14, 2024 </span>
+                <span id="picture-date"> </span>
               </p>
             </div>
             <div class="flex items-center space-x-2 md:space-x-3">
@@ -184,7 +184,7 @@
                   max=""
                   min="1995-06-16"
                 />
-                <span class="text-sm">Dec 17, 2025</span>
+                <span class="text-sm"></span>
               </label>
               <button
                 id="load-date-btn"
@@ -217,7 +217,7 @@
                 <img
                   id="apod-image"
                   class="w-full h-full object-cover hidden"
-                  src="https://apod.nasa.gov/apod/image/2512/Crab_Chen_960.jpg"
+                  src=""
                   alt="Astronomy Picture of the Day"
                 />
 
@@ -225,11 +225,7 @@
                   class="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                   <div class="absolute bottom-6 left-6 right-6">
-                    <a
-                      id="apod-image-full-hd"
-                      href="https://apod.nasa.gov/apod/image/2512/Crab_Chen_1920.jpg"
-                      target="_blank"
-                    >
+                    <a id="apod-image-full-hd" href="" target="_blank">
                       <button
                         class="w-full py-3 bg-white/10 backdrop-blur-md rounded-lg font-semibold hover:bg-white/20 transition-colors"
                       >
@@ -247,33 +243,22 @@
                 <h3
                   id="apod-title"
                   class="text-lg md:text-2xl font-semibold mb-3 md:mb-4"
-                >
-                  The Rosette Nebula
-                </h3>
+                ></h3>
                 <div
                   class="flex items-center space-x-4 mb-4 text-sm text-slate-400"
                 >
                   <span id="apod-date-detail"
-                    ><i class="far fa-calendar mr-2"></i>2024-03-14</span
-                  >
+                    ><i class="far fa-calendar mr-2"></i
+                  ></span>
                 </div>
                 <p
                   id="apod-explanation"
                   class="text-slate-300 leading-relaxed mb-4"
-                >
-                  The Rosette Nebula is a large spherical H II region located
-                  near one end of a giant molecular cloud in the Monoceros
-                  region of the Milky Way Galaxy. The open cluster NGC 2244
-                  (Caldwell 50) is closely associated with the nebulosity, the
-                  stars of the cluster having been formed from the nebula's
-                  matter.
-                </p>
+                ></p>
                 <div
                   id="apod-copyright"
                   class="text-xs text-slate-400 italic mb-4"
-                >
-                  &copy; NASA/JPL
-                </div>
+                ></div>
               </div>
               <div
                 class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6"
@@ -285,13 +270,11 @@
                 <div class="space-y-3 text-sm">
                   <div class="flex justify-between">
                     <span class="text-slate-400">Date</span>
-                    <span id="apod-date-info" class="font-medium"
-                      >2024-03-14</span
-                    >
+                    <span id="apod-date-info" class="font-medium"></span>
                   </div>
                   <div class="flex justify-between">
                     <span class="text-slate-400">Media Type</span>
-                    <span id="apod-media-type" class="font-medium">Image</span>
+                    <span id="apod-media-type" class="font-medium"></span>
                   </div>
                   <div class="flex justify-between">
                     <span class="text-slate-400">Source</span>
@@ -340,7 +323,6 @@
                         id="featured-launch-status"
                         class="px-4 py-1.5 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold"
                       >
-                        Go
                       </span>
                     </div>
                     <h3
@@ -368,9 +350,7 @@
                         <p
                           id="diff-days-num"
                           class="text-2xl font-bold text-blue-400"
-                        >
-                          2
-                        </p>
+                        ></p>
                         <p class="text-xs text-slate-400">Days Until Launch</p>
                       </div>
                     </div>
@@ -449,19 +429,12 @@
                     class="relative h-full min-h-[400px] rounded-2xl overflow-hidden bg-slate-900/50"
                   >
                     <!-- Placeholder image/icon since we can't load external images reliably without correct URLs -->
-                    <!-- <div
-                      class="flex hidden items-center justify-center h-full min-h-[400px] bg-slate-800"
-                    >
-                      <i class="fas fa-rocket text-9xl text-slate-700/50"></i>
-                    </div> -->
+
                     <img
                       id="featured-launch-img"
                       src=""
                       class="w-full h-full object-cover"
                     />
-                    <!-- <div
-                      class="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent"
-                    ></div> -->
                   </div>
                 </div>
               </div>
@@ -655,7 +628,6 @@
                     id="planet-detail-image"
                     class="w-full h-full object-contain"
                     src=""
-                    alt="earth planet detailed realistic render with clouds and continents"
                   />
                 </div>
                 <div class="flex-1">
@@ -663,9 +635,7 @@
                     <h3
                       id="planet-detail-name"
                       class="text-2xl md:text-3xl font-space font-bold"
-                    >
-                      Earth
-                    </h3>
+                    ></h3>
                     <button
                       class="w-10 h-10 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors"
                     >
@@ -675,15 +645,7 @@
                   <p
                     id="planet-detail-description"
                     class="text-slate-300 mb-4 md:mb-6 leading-relaxed text-sm md:text-base"
-                  >
-                    Earth is the third planet from the Sun and the only
-                    astronomical object known to harbor life. About 29% of
-                    Earth's surface is land consisting of continents and
-                    islands. The remaining 71% is covered with water, mostly by
-                    oceans, seas, gulfs, and other salt-water bodies, but also
-                    by lakes, rivers, and other fresh water, which together
-                    constitute the hydrosphere.
-                  </p>
+                  ></p>
                 </div>
               </div>
               <div class="grid grid-cols-2 gap-2 md:gap-4 mt-4">
@@ -697,9 +659,7 @@
                   <p
                     id="planet-distance"
                     class="text-sm md:text-lg font-semibold"
-                  >
-                    149.6M km
-                  </p>
+                  ></p>
                 </div>
                 <div class="bg-slate-900/50 rounded-lg p-4">
                   <p
@@ -708,9 +668,7 @@
                     <i class="fas fa-circle"></i>
                     Mean Radius
                   </p>
-                  <p id="planet-radius" class="text-lg font-semibold">
-                    6,371 km
-                  </p>
+                  <p id="planet-radius" class="text-lg font-semibold"></p>
                 </div>
                 <div class="bg-slate-900/50 rounded-lg p-4">
                   <p
@@ -719,9 +677,7 @@
                     <i class="fas fa-weight"></i>
                     Mass
                   </p>
-                  <p id="planet-mass" class="text-lg font-semibold">
-                    5.97 × 10²⁴ kg
-                  </p>
+                  <p id="planet-mass" class="text-lg font-semibold"></p>
                 </div>
                 <div class="bg-slate-900/50 rounded-lg p-4">
                   <p
@@ -730,9 +686,7 @@
                     <i class="fas fa-compress"></i>
                     Density
                   </p>
-                  <p id="planet-density" class="text-lg font-semibold">
-                    5.51 g/cm³
-                  </p>
+                  <p id="planet-density" class="text-lg font-semibold"></p>
                 </div>
                 <div class="bg-slate-900/50 rounded-lg p-4">
                   <p
@@ -741,9 +695,10 @@
                     <i class="fas fa-sync-alt"></i>
                     Orbital Period
                   </p>
-                  <p id="planet-orbital-period" class="text-lg font-semibold">
-                    365.25 days
-                  </p>
+                  <p
+                    id="planet-orbital-period"
+                    class="text-lg font-semibold"
+                  ></p>
                 </div>
                 <div class="bg-slate-900/50 rounded-lg p-4">
                   <p
@@ -752,9 +707,7 @@
                     <i class="fas fa-redo"></i>
                     Rotation Period
                   </p>
-                  <p id="planet-rotation" class="text-lg font-semibold">
-                    24 hours
-                  </p>
+                  <p id="planet-rotation" class="text-lg font-semibold"></p>
                 </div>
                 <div class="bg-slate-900/50 rounded-lg p-4">
                   <p
@@ -763,7 +716,7 @@
                     <i class="fas fa-moon"></i>
                     Moons
                   </p>
-                  <p id="planet-moons" class="text-lg font-semibold">1</p>
+                  <p id="planet-moons" class="text-lg font-semibold"></p>
                 </div>
                 <div class="bg-slate-900/50 rounded-lg p-4">
                   <p
@@ -772,9 +725,7 @@
                     <i class="fas fa-arrows-alt-v"></i>
                     Gravity
                   </p>
-                  <p id="planet-gravity" class="text-lg font-semibold">
-                    9.8 m/s²
-                  </p>
+                  <p id="planet-gravity" class="text-lg font-semibold"></p>
                 </div>
               </div>
             </div>
@@ -794,28 +745,26 @@
                     <span
                       id="planet-discoverer"
                       class="font-semibold text-right"
-                      >Known since antiquity</span
-                    >
+                    ></span>
                   </div>
                   <div
                     class="flex justify-between items-center py-2 border-b border-slate-700"
                   >
                     <span class="text-slate-400">Discovery Date</span>
-                    <span id="planet-discovery-date" class="font-semibold"
-                      >Ancient</span
-                    >
+                    <span
+                      id="planet-discovery-date"
+                      class="font-semibold"
+                    ></span>
                   </div>
                   <div
                     class="flex justify-between items-center py-2 border-b border-slate-700"
                   >
                     <span class="text-slate-400">Body Type</span>
-                    <span id="planet-body-type" class="font-semibold"
-                      >Planet</span
-                    >
+                    <span id="planet-body-type" class="font-semibold"></span>
                   </div>
                   <div class="flex justify-between items-center py-2">
                     <span class="text-slate-400">Volume</span>
-                    <span id="planet-volume" class="font-semibold">N/A</span>
+                    <span id="planet-volume" class="font-semibold"></span>
                   </div>
                 </div>
               </div>
@@ -829,23 +778,19 @@
                 <ul id="planet-facts" class="space-y-3 text-sm">
                   <li class="flex items-start">
                     <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
-                    <span class="text-slate-300">
-                      Mass: 5.97237 × 10^24 kg
-                    </span>
+                    <span class="text-slate-300"> </span>
                   </li>
                   <li class="flex items-start">
                     <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
-                    <span class="text-slate-300"
-                      >Surface gravity: 9.8 m/s²</span
-                    >
+                    <span class="text-slate-300"></span>
                   </li>
                   <li class="flex items-start">
                     <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
-                    <span class="text-slate-300">Density: 5.5136 g/cm³</span>
+                    <span class="text-slate-300"></span>
                   </li>
                   <li class="flex items-start">
                     <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
-                    <span class="text-slate-300">Axial tilt: 23.4393°</span>
+                    <span class="text-slate-300"></span>
                   </li>
                 </ul>
               </div>
@@ -861,41 +806,31 @@
                     class="flex justify-between items-center py-2 border-b border-slate-700"
                   >
                     <span class="text-slate-400">Perihelion</span>
-                    <span id="planet-perihelion" class="font-semibold"
-                      >147.1M km</span
-                    >
+                    <span id="planet-perihelion" class="font-semibold"></span>
                   </div>
                   <div
                     class="flex justify-between items-center py-2 border-b border-slate-700"
                   >
                     <span class="text-slate-400">Aphelion</span>
-                    <span id="planet-aphelion" class="font-semibold"
-                      >152.1M km</span
-                    >
+                    <span id="planet-aphelion" class="font-semibold"></span>
                   </div>
                   <div
                     class="flex justify-between items-center py-2 border-b border-slate-700"
                   >
                     <span class="text-slate-400">Eccentricity</span>
-                    <span id="planet-eccentricity" class="font-semibold"
-                      >0.0167</span
-                    >
+                    <span id="planet-eccentricity" class="font-semibold"></span>
                   </div>
                   <div
                     class="flex justify-between items-center py-2 border-b border-slate-700"
                   >
                     <span class="text-slate-400">Inclination</span>
-                    <span id="planet-inclination" class="font-semibold"
-                      >0.00°</span
-                    >
+                    <span id="planet-inclination" class="font-semibold"></span>
                   </div>
                   <div
                     class="flex justify-between items-center py-2 border-b border-slate-700"
                   >
                     <span class="text-slate-400">Axial Tilt</span>
-                    <span id="planet-axial-tilt" class="font-semibold"
-                      >23.44°</span
-                    >
+                    <span id="planet-axial-tilt" class="font-semibold"></span>
                   </div>
                   <div
                     class="flex justify-between items-center py-2 border-b border-slate-700"
@@ -905,9 +840,7 @@
                   </div>
                   <div class="flex justify-between items-center py-2">
                     <span class="text-slate-400">Escape Velocity</span>
-                    <span id="planet-escape" class="font-semibold"
-                      >11.2 km/s</span
-                    >
+                    <span id="planet-escape" class="font-semibold"></span>
                   </div>
                 </div>
               </div>

@@ -82,7 +82,8 @@ let apodMediaType = document.querySelector("#today-in-space #apod-media-type");
 let apodLoader = document.querySelector("#today-in-space #apod-loading");
 // 2) Main Functions
 function displayData(data){
-    if (data.url == undefined){ // To not to make any error
+    if (data.url == undefined || data.media_type === 'video' ||
+        data.url.slice(-4,0) === 'html'){ // To not to make any error
         data.url="";
         data.hdurl="";
         apodLoader.classList.remove('hidden');
@@ -182,7 +183,6 @@ function daysFromToday(date) {
     return diffDays;
 }
 
-
 function formatLaunchDate(net) {
   const date = new Date(net);
   return date.toLocaleDateString("en-US", {
@@ -213,8 +213,6 @@ function formatLaunchTime(net) {
     timeZone: "UTC"
   }) + " UTC";
 }
-
-
 
 function setLaunchImage(imgEl, url, callbBack= "assets/images/launch-placeholder.png") {
   const img = new Image();
@@ -334,14 +332,14 @@ async function getUpcomingLaunches() {
         console.log(error.message);
     }
 }
-
-
-
 // 3) Main Logic
-
 // =========================================
 // =========================================
 // Planets Section
+/* Note: I made the table data static because no matter which planet changes, 
+the table will always stay the same and won’t change. 
+So I preferred to keep the table static so 
+the browser doesn’t keep re-rendering or clearing the DOM all the time.*/
 // 1) Main Variables
 let planets = document.querySelectorAll('#planets #planets-grid .planet-card');
 let planetDetailImage = document.querySelector('#planets #planet-detail-image');
