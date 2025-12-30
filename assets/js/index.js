@@ -7,14 +7,62 @@ const apiKey='GODw1jxABAeKpmtcqmGfOg2JBmn63CmqhdiUqidT'
 // =========================================
 // Sidebar Section
 // 1) Main Variables
+let sidebar = document.querySelector('#sidebar');
+let overlay = document.getElementById('overlay');
+let navLinks = document.querySelectorAll('#sidebar a');
+let sections = document.querySelectorAll('#main-content section');
 // 2) Main Functions
-// 3) Main Login
+function openSideBar(){
+    sidebar.classList.add('sidebar-open');
+    overlay.classList.add('sidebar-overlay');
+}
+function closeSideBar(){
+    sidebar.classList.remove('sidebar-open');
+    overlay.classList.remove('sidebar-overlay');
+}
+function resetAllLinks(){
+    navLinks.forEach( (navlink) => {
+        navlink.classList.remove('text-blue-400','bg-blue-500/10');
+        navlink.classList.add('text-slate-300','hover:bg-slate-800');
+    });
+}
+function resetAllSections(){
+    sections.forEach( (section) => {
+        section.classList.add('hidden');
+    });
+}
+function showSection(dataSection){
+    resetAllSections();
+    sections.forEach( (section) => {
+        if (section.getAttribute('id') === dataSection){
+            section.classList.remove('hidden');
+        }
+    });
+}
+// 3) Main Logic
+navLinks.forEach( (navlink) => {
+    navlink.addEventListener('click',function(e){
+        resetAllLinks();
+        e.currentTarget.classList.add('text-blue-400','bg-blue-500/10');
+        e.currentTarget.classList.remove('text-slate-300','hover:bg-slate-800');
+        showSection(e.currentTarget.getAttribute('data-section'));
+        closeSideBar();
+    });
+})
 // =========================================
 // =========================================
 // Header Section
 // 1) Main Variables
+let sidebarToggle = document.querySelector('#header #sidebar-toggle');
 // 2) Main Functions
-// 3) Main Login
+// 3) Main Logic
+sidebarToggle.addEventListener('click',openSideBar);
+document.addEventListener('click', function(e){
+    if(!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)){
+        closeSideBar();
+    }
+});
+
 // =========================================
 // =========================================
 // Today-In-Space Section
@@ -84,7 +132,7 @@ async function getAstronomyPicture(apiKey,date=0){
         console.log(error.message);
     }
 }
-// 3) Main Login
+// 3) Main Logic
 todayApodBtn.addEventListener('click', function(e){
     let todayDate = new Date();
     apodDateInput.nextElementSibling.innerHTML = getDateFormat2(todayDate);
@@ -110,13 +158,13 @@ apodDateInput.addEventListener('change', function(e){
 // Launches Section
 // 1) Main Variables
 // 2) Main Functions
-// 3) Main Login
+// 3) Main Logic
 // =========================================
 // =========================================
 // Planets Section
 // 1) Main Variables
 // 2) Main Functions
-// 3) Main Login
+// 3) Main Logic
 // =========================================
 // =========================================
 // Shared Functions
@@ -141,6 +189,10 @@ function init(){
     apodDateInput.setAttribute('value',getDateFormat1(todayDate));
     apodDateInput.nextElementSibling.innerHTML = getDateFormat2(todayDate);
     getAstronomyPicture(apiKey);
+    showSection('today-in-space');
+    document.querySelector('#sidebar a').classList.remove('text-slate-300','hover:bg-slate-800');
+    document.querySelector('#sidebar a').classList.add('text-blue-400','bg-blue-500/10');
+    closeSideBar();
 }
 // 3) Main Logic of Whole Porject
 init();
