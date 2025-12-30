@@ -168,9 +168,21 @@ let featuredLauncheLocation = document.querySelector('#launches #featured-launch
 let featuredLauncheCountry = document.querySelector('#launches #featured-launch #featured-launche-country');
 let featuredLauncheDes = document.querySelector('#launches #featured-launch #featured-launche-des');
 let featuredLaunchImg = document.querySelector('#launches #featured-launch #featured-launch-img');
+let diffDays = document.querySelector('#launches #featured-launch #diff-days');
+let diffDaysNum = document.querySelector('#launches #featured-launch #diff-days-num');
 // Next
+let launchesGrid = document.querySelector('#launches #launches-grid');
 
 // 2) Main Functions
+function daysFromToday(date) {
+    const targetDate = new Date(date);      
+    const today = new Date();                
+    const diffTime = Math.abs(targetDate - today);
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+}
+
+
 function formatLaunchDate(net) {
   const date = new Date(net);
   return date.toLocaleDateString("en-US", {
@@ -178,6 +190,16 @@ function formatLaunchDate(net) {
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: "UTC"
+  });
+}
+
+function formateDate2(net) {
+  const date = new Date(net);
+  return date.toLocaleDateString("en-US", {
+    month: "short",   
+    day: "numeric",   
+    year: "numeric",  
     timeZone: "UTC"
   });
 }
@@ -192,25 +214,14 @@ function formatLaunchTime(net) {
   }) + " UTC";
 }
 
-function setLaunchImage(imgEl, url) {
+
+
+function setLaunchImage(imgEl, url, callbBack= "assets/images/launch-placeholder.png") {
   const img = new Image();
   img.onload = () => imgEl.src = url;
-  img.onerror = () => imgEl.src = "assets/images/placeholder.jpg";
+  img.onerror = () => imgEl.src = callbBack;
   img.src = url;
 }
-
-function setSafeImage(imgEl, url, fallback = "assets/images/launch-placeholder.png") {
-    const testImg = new Image();
-    testImg.onload = () => {
-        imgEl.src = url;
-    };
-    testImg.onerror = () => {
-        imgEl.src = fallback;
-    };
-    testImg.src = url;
-}
-
-
 
 function displayLaunches(launches){
     console.log(launches);
@@ -224,18 +235,91 @@ function displayLaunches(launches){
     featuredLauncheLocation.innerHTML = launches[0].pad.location.name;
     featuredLauncheCountry.innerHTML = launches[0].pad.country.name;
     featuredLauncheDes.innerHTML = launches[0].pad.location. description;
-    setSafeImage(featuredLaunchImg, launches[0]?.image?.image_url);
-
-    
-    // launches[0].image.thumbnail_url
-    
-
-
+    setLaunchImage(featuredLaunchImg, launches[0]?.image?.image_url);
+    if (daysFromToday(launches[0].net) <= 3 && daysFromToday(launches[0].net) > 0){
+        diffDays.classList.add('inline-flex');
+        diffDays.classList.remove('hidden');
+        diffDaysNum.innerHTML = daysFromToday(launches[0].net);
+    }
+    else{
+        diffDays.classList.remove('inline-flex');
+        diffDays.classList.add('hidden');
+    }
     // Next
+    let blackBox='';
+    for(let i = 1; i< launches.length; i++){
+        blackBox += `
+        <div
+        class="bg-slate-800/50 border border-slate-700 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all group cursor-pointer"
+        >
+            <div
+            class="relative h-48 bg-slate-900/50 flex items-center justify-center"
+            >
+            <img
+                src='assets/images/launch-placeholder.png'}
+                class="upcomming-launch-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div class="absolute top-3 right-3">
+                <span
+                class="px-3 py-1 bg-green-500/90 text-white backdrop-blur-sm rounded-full text-xs font-semibold"
+                >
+                ${launches[i].status.abbrev}
+                </span>
+            </div>
+            </div>
+            <div class="p-5">
+            <div class="mb-3">
+                <h4
+                class="font-bold text-lg mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors"
+                >
+                ${launches[i].name}
+                </h4>
+                <p class="text-sm text-slate-400 flex items-center gap-2">
+                <i class="fas fa-building text-xs"></i>
+                ${launches[i].launch_service_provider.name}
+                </p>
+            </div>
+            <div class="space-y-2 mb-4">
+                <div class="flex items-center gap-2 text-sm">
+                <i class="fas fa-calendar text-slate-500 w-4"></i>
+                <span class="text-slate-300">${formateDate2(launches[i].net)}</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                <i class="fas fa-clock text-slate-500 w-4"></i>
+                <span class="text-slate-300">${formatLaunchTime(launches[i].net)}</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                <i class="fas fa-rocket text-slate-500 w-4"></i>
+                <span class="text-slate-300">${launches[i].rocket.configuration.full_name}</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                <i class="fas fa-map-marker-alt text-slate-500 w-4"></i>
+                <span class="text-slate-300 line-clamp-1">${launches[i].pad.location.name}</span>
+                </div>
+            </div>
+            <div
+                class="flex items-center gap-2 pt-4 border-t border-slate-700"
+            >
+                <button
+                class="flex-1 px-4 py-2 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors text-sm font-semibold"
+                >
+                Details
+                </button>
+                <button
+                class="px-3 py-2 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors"
+                >
+                <i class="far fa-heart"></i>
+                </button>
+            </div>
+            </div>
+        </div>
+        `
+    }
+    launchesGrid.innerHTML = blackBox;
+    launchesGrid.querySelectorAll('.upcomming-launch-img').forEach((img, idx) => {
+        setLaunchImage(img, launches[idx + 1]?.image?.thumbnail_url);
+    });
 }
-
-
-
 
 async function getUpcomingLaunches() {
     try{
@@ -250,6 +334,9 @@ async function getUpcomingLaunches() {
         console.log(error.message);
     }
 }
+
+
+
 // 3) Main Logic
 
 // =========================================
