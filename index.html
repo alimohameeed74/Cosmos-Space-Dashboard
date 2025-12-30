@@ -672,7 +672,7 @@
             <!-- Mercury -->
             <div
               class="planet-card bg-slate-800/50 border border-slate-700 rounded-2xl p-4 transition-all cursor-pointer group"
-              data-planet-id="mercury"
+              data-planet-id="mercure"
               style="--planet-color: #eab308"
               onmouseover="this.style.borderColor='#eab30880'"
               onmouseout="this.style.borderColor='#334155'"
@@ -708,7 +708,7 @@
             <!-- Earth -->
             <div
               class="planet-card bg-slate-800/50 border border-slate-700 rounded-2xl p-4 transition-all cursor-pointer group"
-              data-planet-id="earth"
+              data-planet-id="terre"
               style="--planet-color: #3b82f6"
               onmouseover="this.style.borderColor='#3b82f680'"
               onmouseout="this.style.borderColor='#334155'"
@@ -762,7 +762,7 @@
             <!-- Saturn -->
             <div
               class="planet-card bg-slate-800/50 border border-slate-700 rounded-2xl p-4 transition-all cursor-pointer group"
-              data-planet-id="saturn"
+              data-planet-id="saturne"
               style="--planet-color: #facc15"
               onmouseover="this.style.borderColor='#facc1580'"
               onmouseout="this.style.borderColor='#334155'"
@@ -827,7 +827,7 @@
                   <img
                     id="planet-detail-image"
                     class="w-full h-full object-contain"
-                    src="./assets/images/earth.png"
+                    src=""
                     alt="earth planet detailed realistic render with clouds and continents"
                   />
                 </div>
@@ -1002,27 +1002,23 @@
                 <ul id="planet-facts" class="space-y-3 text-sm">
                   <li class="flex items-start">
                     <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
-                    <span class="text-slate-300"
-                      >Only known planet with liquid water</span
-                    >
+                    <span class="text-slate-300">
+                      Mass: 5.97237 × 10^24 kg
+                    </span>
                   </li>
                   <li class="flex items-start">
                     <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
                     <span class="text-slate-300"
-                      >Atmosphere contains 78% nitrogen</span
+                      >Surface gravity: 9.8 m/s²</span
                     >
                   </li>
                   <li class="flex items-start">
                     <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
-                    <span class="text-slate-300"
-                      >Magnetic field protects from solar wind</span
-                    >
+                    <span class="text-slate-300">Density: 5.5136 g/cm³</span>
                   </li>
                   <li class="flex items-start">
                     <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
-                    <span class="text-slate-300"
-                      >Formed 4.54 billion years ago</span
-                    >
+                    <span class="text-slate-300">Axial tilt: 23.4393°</span>
                   </li>
                 </ul>
               </div>
@@ -1190,6 +1186,7 @@
                       </td>
                       <td class="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap">
                         <span
+                          style="background-color: #f9731680; color: #fb923c"
                           class="px-2 py-1 rounded text-xs bg-orange-500/50 text-orange-200"
                           >Terrestrial</span
                         >
@@ -1238,6 +1235,7 @@
                       </td>
                       <td class="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap">
                         <span
+                          style="background-color: #f9731680; color: #fb923c"
                           class="px-2 py-1 rounded text-xs bg-orange-500/50 text-orange-200"
                           >Terrestrial</span
                         >
@@ -1279,7 +1277,7 @@
                       <td
                         class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
                       >
-                        365.2 days
+                        1.0 years
                       </td>
                       <td
                         class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
@@ -1288,6 +1286,7 @@
                       </td>
                       <td class="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap">
                         <span
+                          style="background-color: #f9731680; color: #fb923c"
                           class="px-2 py-1 rounded text-xs bg-blue-500/50 text-blue-200"
                           >Terrestrial</span
                         >
@@ -1327,7 +1326,7 @@
                       <td
                         class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
                       >
-                        687 days
+                        1.9 years
                       </td>
                       <td
                         class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
@@ -1336,6 +1335,7 @@
                       </td>
                       <td class="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap">
                         <span
+                          style="background-color: #f9731680; color: #fb923c"
                           class="px-2 py-1 rounded text-xs bg-red-500/50 text-red-200"
                           >Terrestrial</span
                         >
@@ -1380,10 +1380,11 @@
                       <td
                         class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
                       >
-                        79
+                        97
                       </td>
                       <td class="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap">
                         <span
+                          style="background-color: #a855f780; color: #c084fc"
                           class="px-2 py-1 rounded text-xs bg-purple-500/50 text-purple-200"
                           >Gas Giant</span
                         >
@@ -1408,7 +1409,7 @@
                       <td
                         class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
                       >
-                        9.58
+                        9.54
                       </td>
                       <td
                         class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
@@ -1428,10 +1429,11 @@
                       <td
                         class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
                       >
-                        82
+                        274
                       </td>
                       <td class="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap">
                         <span
+                          style="background-color: #a855f780; color: #c084fc"
                           class="px-2 py-1 rounded text-xs bg-yellow-500/50 text-yellow-200"
                           >Gas Giant</span
                         >
@@ -1476,10 +1478,11 @@
                       <td
                         class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
                       >
-                        27
+                        29
                       </td>
                       <td class="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap">
                         <span
+                          style="background-color: #3b82f680; color: #60a5fa"
                           class="px-2 py-1 rounded text-xs bg-cyan-500/50 text-cyan-200"
                           >Ice Giant</span
                         >
@@ -1504,7 +1507,7 @@
                       <td
                         class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
                       >
-                        30.05
+                        30.07
                       </td>
                       <td
                         class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
@@ -1524,10 +1527,11 @@
                       <td
                         class="px-4 md:px-6 py-3 md:py-4 text-slate-300 text-sm md:text-base whitespace-nowrap"
                       >
-                        14
+                        16
                       </td>
                       <td class="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap">
                         <span
+                          style="background-color: #3b82f680; color: #60a5fa"
                           class="px-2 py-1 rounded text-xs bg-blue-500/50 text-blue-200"
                           >Ice Giant</span
                         >

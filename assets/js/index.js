@@ -163,8 +163,157 @@ apodDateInput.addEventListener('change', function(e){
 // =========================================
 // Planets Section
 // 1) Main Variables
+let planets = document.querySelectorAll('#planets #planets-grid .planet-card');
+let planetDetailImage = document.querySelector('#planets #planet-detail-image');
+let planetDetailName = document.querySelector('#planets #planet-detail-name');
+let planetDetailDescription = document.querySelector('#planets #planet-detail-description');
+let planetDistance = document.querySelector('#planets #planet-distance');
+let planetRadius = document.querySelector('#planets #planet-radius');
+let planetMass = document.querySelector('#planets #planet-mass');
+let planetDensity = document.querySelector('#planets #planet-density');
+let planetOrbitalPeriod = document.querySelector('#planets #planet-orbital-period');
+let planetRotation = document.querySelector('#planets #planet-rotation');
+let planetMoons = document.querySelector('#planets #planet-moons');
+let planetGravity = document.querySelector('#planets #planet-gravity');
+let planetDiscoverer = document.querySelector('#planets #planet-discoverer');
+let planetDiscoveryDate = document.querySelector('#planets #planet-discovery-date');
+let planetBodyType = document.querySelector('#planets #planet-body-type');
+let planetVolume = document.querySelector('#planets #planet-volume');
+let planetFacts = document.querySelectorAll('#planets #planet-facts li span');
+let planetPerihelion = document.querySelector('#planets #planet-perihelion');
+let planetAphelion = document.querySelector('#planets #planet-aphelion');
+let planetEccentricity = document.querySelector('#planets #planet-eccentricity');
+let planetInclination = document.querySelector('#planets #planet-inclination');
+let planetAxialTilt = document.querySelector('#planets #planet-axial-tilt');
+let planetTemp = document.querySelector('#planets #planet-temp');
+let planetEscape = document.querySelector('#planets #planet-escape');
+
+let filteredPlanet={};
+let allPlanets=[];
 // 2) Main Functions
+function toMillionKm(value){
+  if(typeof value !== "number") return "Invalid number";
+  return `${(value / 1_000_000).toFixed(1)}M km`;
+}
+
+function formatNumber(value){
+  if(typeof value !== "number") return "Invalid number";
+  return `${value.toLocaleString()} km`; 
+}
+
+function formatMass(obj){
+  if(!obj || typeof obj.massValue !== "number" || typeof obj.massExponent !== "number"){
+    return "Invalid mass object";
+  }
+  return `${obj.massValue} × 10^${obj.massExponent} kg`;
+}
+
+function formatDensityValue(value){
+  if(typeof value !== "number") return "Invalid number";
+  return `${value} g/cm³`;
+}
+
+function formatDays(days) {
+    return `${days.toFixed(2)} days`;
+}
+
+function formatHours(hours) {
+    return `${hours.toFixed(2)} hours`;
+}
+
+function formatGravity(value) {
+    return `${value.toFixed(2)} m/s²`;
+}
+
+function formatVolume(volObj) {
+  if (
+    typeof volObj !== "object" ||
+    typeof volObj.volValue !== "number" ||
+    typeof volObj.volExponent !== "number"
+  ) {
+    return "Invalid input";
+  }
+  return `${volObj.volValue} × 10^${volObj.volExponent} km³`;
+}
+
+function formatDegree(value) {
+  if (typeof value !== "number") return "Invalid number";
+  return `${value.toFixed(2)}°`;
+}
+
+function formatCelsius(value) {
+  if (typeof value !== "number") return "Invalid number";
+  return `${value.toFixed(0)}°C`;
+}
+
+function formatSpeedKmPerSec(value) {
+  if (typeof value !== "number") return "Invalid number";
+  const kmPerSec = value / 1000;
+  return `${kmPerSec.toFixed(2)} km/s`;
+}
+
+function displayPlanetDetails(planet){
+    planetDetailImage.setAttribute('src', planet.image);
+    planetDetailName.innerHTML = planet.englishName;
+    planetDetailDescription.innerHTML = planet.description;
+    planetDistance.innerHTML = toMillionKm(planet.semimajorAxis);
+    planetRadius.innerHTML = formatNumber(planet.meanRadius);
+    planetMass.innerHTML = formatMass(planet.mass);
+    planetDensity.innerHTML = formatDensityValue(planet.density);
+    planetOrbitalPeriod.innerHTML = formatDays(planet.sideralOrbit);
+    planetRotation.innerHTML = formatHours(planet.sideralRotation);
+    planetMoons.innerHTML = (planet.moons) ? planet.moons.length : 0;
+    planetGravity.innerHTML = formatGravity(planet.gravity);
+    planetDiscoverer.innerHTML = (planet.discoveredBy) ? planet.discoveredBy : 'Known since antiquity';
+    planetDiscoveryDate.innerHTML = (planet.discoveryDate) ? planet.discoveryDate : 'Ancient times';
+    planetBodyType.innerHTML = planet.bodyType;
+    planetVolume.innerHTML = formatVolume(planet.vol);
+    let quickFactsObj ={
+        mass: `Mass: ${formatMass(planet.mass)}`,
+        gravity: `Surface gravity: ${formatGravity(planet.gravity)}`,
+        density: `Density: ${formatDensityValue(planet.density)}`,
+        axialTilt: `Axial tilt: ${formatDegree(planet.axialTilt)}`
+    };
+    let c=0;
+    for (let fact of planetFacts){
+        fact.innerHTML = Object.values(quickFactsObj)[c];
+        c++;
+    }
+    planetPerihelion.innerHTML = toMillionKm(planet.perihelion);
+    planetAphelion.innerHTML = toMillionKm(planet.aphelion),
+    planetEccentricity.innerHTML = planet.eccentricity,
+    planetInclination.innerHTML = formatDegree(planet.inclination),
+    planetAxialTilt.innerHTML = formatDegree(planet.axialTilt),
+    planetTemp.innerHTML = formatCelsius(planet.avgTemp),
+    planetEscape.innerHTML = formatSpeedKmPerSec(planet.escape)
+}
+
+async function getAllPlanets() {
+    try{
+        let response = await fetch('https://solar-system-opendata-proxy.vercel.app/api/planets');
+        if (!response.ok){
+            throw new Error('Problem happened when getting planets');
+        }
+        let data = await response.json();
+        allPlanets = data.bodies;
+        console.log(allPlanets);
+        getPlanet();
+    }
+    catch(error){
+        console.log(error.message);
+    }
+}
+function getPlanet(planetId='terre'){
+    let filteredPlanet={};
+    filteredPlanet = allPlanets.find(planet => planet.id === planetId);
+    displayPlanetDetails(filteredPlanet);
+}
 // 3) Main Logic
+planets.forEach( (planet) => {
+    planet.addEventListener('click',function(e){
+        getPlanet(e.currentTarget.getAttribute('data-planet-id'));
+});
+});
 // =========================================
 // =========================================
 // Shared Functions
@@ -193,6 +342,7 @@ function init(){
     document.querySelector('#sidebar a').classList.remove('text-slate-300','hover:bg-slate-800');
     document.querySelector('#sidebar a').classList.add('text-blue-400','bg-blue-500/10');
     closeSideBar();
+    getAllPlanets();
 }
 // 3) Main Logic of Whole Porject
 init();
